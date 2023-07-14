@@ -1,0 +1,10 @@
+.father-div {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    padding: 15vh 15vw;
+}
+
+.children-div {
+    margin-bottom: 5vw;
+}
