@@ -3,6 +3,11 @@
     border: 1px solid black;
 }
 
-.span-footer {
+.button-footer {
     margin: 0 9px;
+    border: 0px solid transparent;
+}
+
+.button-footer:hover {
+    cursor: pointer;
 }
