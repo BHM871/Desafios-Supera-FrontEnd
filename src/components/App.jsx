@@ -1,7 +1,7 @@
 import React from "react";
-import Form from "./components/form/Form";
-import Table from "./components/table/Table";
-import './css/App.css';
+import Form from "./form/Form";
+import Table from "./table/Table";
+import '/src/css/App.css';
 
 function App(){
     return (
