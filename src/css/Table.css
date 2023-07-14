@@ -1,0 +1,12 @@
+.row {
+    height: 40px;
+}
+
+.td {
+    border: 1px solid black;
+    width: 25%;
+}
+
+table {
+    border-collapse: collapse;
+}

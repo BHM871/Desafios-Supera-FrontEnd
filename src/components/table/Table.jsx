@@ -3,6 +3,7 @@ import Head from "./Head";
 import Topics from "./Topics";
 import Content from "./Content";
 import Footer from "./Footer";
+import '/src/css/Table.css';
 
 function Table() {
     return (

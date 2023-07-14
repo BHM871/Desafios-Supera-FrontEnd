@@ -1,0 +1,10 @@
+.head-table {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.text-head {
+    padding: 0 18px 0 3px;
+    font-weight: 500;
+    font-size: 18px;
+}

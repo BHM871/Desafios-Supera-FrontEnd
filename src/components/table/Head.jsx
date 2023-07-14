@@ -1,4 +1,5 @@
 import React from "react";
+import '/src/css/Head.css';
 
 function Head({saldoTotal, saldoNoPeriodo}) {
     return  ( 

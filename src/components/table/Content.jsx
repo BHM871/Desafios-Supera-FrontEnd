@@ -4,16 +4,16 @@ function Content({dataTransacao, valorTransacao, tipoTransacao, nomeTransacionad
     return(
         <>
             <tr className="row">
-                <td className="td-content">
+                <td className="td">
                     {dataTransacao}
                 </td>
-                <td className="td-content">
+                <td className="td">
                     R$ {valorTransacao}
                 </td>
-                <td className="td-content">
+                <td className="td">
                     {tipoTransacao}
                 </td>
-                <td className="td-content">
+                <td className="td">
                     {nomeTransacionado}
                 </td>
             </tr>

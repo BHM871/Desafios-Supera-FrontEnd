@@ -1,7 +1,18 @@
 import React from "react";
+import Form from "./components/form/Form";
+import Table from "./components/table/Table";
 
 function App(){
-    return <h1>Ola mundo</h1>
+    return (
+        <>
+            <div>
+                <Form metodo={"GET"} />
+            </div>
+            <div>
+                <Table />
+            </div>
+        </>
+    )
 }
 
 export default App
