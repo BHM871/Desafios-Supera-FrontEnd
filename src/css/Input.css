@@ -1,0 +1,30 @@
+.input-div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 60px;
+}
+
+.texto {
+    font-size: 18px;
+    margin: 8px 0 8px 0;
+}
+
+.input {
+    width: 250px;
+    height: 40px;
+    font-size: 15px;
+    padding: 0 5px 0 5px;
+}
+
+@media (max-width: 900px) {
+    .input-div{
+        margin: 8px 10px;
+    }
+
+    .input {
+        width: 350px;
+        height: 40px;
+        font-size: 15px;
+        padding: 0 5px 0 5px;
+    }   
+}

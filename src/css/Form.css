@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    max-width: 100px;
+    align-self: flex-end;
+    margin: 10px 0 10px 20px;
+}
+
+@media (max-width: 900px) {
+    form div {
+        flex-direction: column;
+    }
+    
+    form {
+        align-items: center;
+    }
+}
