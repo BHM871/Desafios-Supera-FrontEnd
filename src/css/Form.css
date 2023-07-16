@@ -1,9 +1,9 @@
-form {
+.form {
     display: flex;
     flex-direction: column;
 }
 
-form div {
+.form div {
     width: max-content;
     height: max-content;
     display: flex;
@@ -19,11 +19,11 @@ button {
 }
 
 @media (max-width: 1200px) {
-    form div {
+    .form div {
         flex-direction: column;
     }
     
-    form {
+    .form {
         align-items: center;
     }
 }

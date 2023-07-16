@@ -3,17 +3,17 @@ import Input from "./Input";
 import Button from "./Button";
 import '/src/css/Form.css';
 
-function Form({metodo}) {
+function Form({action, event}) {
     return(
         <div>
-            <form method={metodo}>
+            <div className="form">
                 <div>
-                    <Input texto={"Data de Ínicio"} tipo={"date"}/>
-                    <Input texto={"Data de Fim"} tipo={"date"}/>
-                    <Input texto={"Nome do Operador Transacionado"} tipo={"text"}/>
+                    <Input texto={"Data de Ínicio"} tipo={"date"} name={"initial"} event={event} />
+                    <Input texto={"Data de Fim"} tipo={"date"} name={"final"} event={event} />
+                    <Input texto={"Nome do Operador Transacionado"} tipo={"text"} name={"name"} event={event}/>
                 </div>
-                <Button />
-            </form>
+                <Button action={action} />
+            </div>
         </div>
     )
 }

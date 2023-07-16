@@ -16,9 +16,9 @@ function Footer({tamanhoDaLista}) {
     return(
         <>
             <tfoot className="row">
-                <th colspan="4" className="text-footer">
-                    <button className="button-footer">&lt;&lt;</button>
-                    <button className="button-footer">&lt;</button>
+                <th colSpan="4" className="text-footer">
+                    <Button valor={"<<"} acao={atualizar()} className={"button-footer"}/>
+                    <Button valor={"<"} acao={atualizar()} className={"button-footer"}/>
                     {
                         quantidade.map(
                             item => {
@@ -26,8 +26,8 @@ function Footer({tamanhoDaLista}) {
                             }
                         )
                     }
-                    <button className="button-footer">&gt;</button>
-                    <button className="button-footer">&gt;&gt;</button>
+                    <Button valor={">"} acao={atualizar()} className={"button-footer"}/>
+                    <Button valor={">>"} acao={atualizar()} className={"button-footer"}/>
                 </th>
             </tfoot>
         </>
