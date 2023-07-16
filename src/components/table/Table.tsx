@@ -7,7 +7,7 @@ import "../../css/Table.css";
 
 import { TransferData } from "../../interfaces/TransferData";
 
-function Table({ data, update, page}) {
+function Table({ data, update, page, allBalance, balanceInInterval}) {
 
     const indexI = (page * 6 - 6);
     const indexF = (page * 6 - 1);
@@ -15,7 +15,7 @@ function Table({ data, update, page}) {
     return (
         <>
             <table>
-                <Head allBalance={null} balanceInInterval={null}/>
+                <Head allBalance={allBalance} balanceInInterval={balanceInInterval}/>
                 <tbody>
                     <Topics />
                     {

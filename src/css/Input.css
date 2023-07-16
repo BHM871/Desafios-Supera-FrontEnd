@@ -4,7 +4,7 @@
     margin-right: 60px;
 }
 
-.texto {
+.text {
     font-size: 18px;
     margin: 8px 0 8px 0;
 }
@@ -14,6 +14,15 @@
     height: 40px;
     font-size: 15px;
     padding: 0 5px 0 5px;
+    border-radius: 8px;
+    border-color: rgba(188, 188, 188, 0.349);
+    background-color: transparent;
+    color: antiquewhite;
+}
+
+.input:hover{
+    border-color: rgb(188, 188, 188);
+    background-color: rgba(250, 235, 215, 0.467);
 }
 
 @media (max-width: 1200px) {

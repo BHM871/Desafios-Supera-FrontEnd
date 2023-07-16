@@ -3,13 +3,13 @@
 }
 
 .td {
-    border: 1px solid black;
+    border: 1px solid antiquewhite;
     width: 25%;
 }
 
 .th {
     font-weight: bold;
-    border: 1px solid black;
+    border: 1px solid antiquewhite;
     width: 25%;
 }
 

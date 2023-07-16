@@ -1,5 +1,6 @@
 button {
-    border: 1px solid black;
+    border: 1px solid antiquewhite;
+    color: antiquewhite;
     border-radius: 5px;
     background-color: transparent;
     padding: 8px;
@@ -8,6 +9,6 @@ button {
 
 button:hover{
     scale: 1.1;
-    background-color: rgb(218, 216, 216);
+    background-color: rgba(226, 226, 226, 0.388);
     cursor: pointer;
 }
