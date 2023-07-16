@@ -14,8 +14,8 @@ function Table({ data, update, page}) {
 
     return (
         <>
-            <table >
-                <Head saldoTotal={null} saldoNoPeriodo={null}/>
+            <table>
+                <Head allBalance={null} balanceInInterval={null}/>
                 <tbody>
                     <Topics />
                     {
@@ -24,16 +24,16 @@ function Table({ data, update, page}) {
                                 if(i >= indexI && i <= indexF){
                                     return <Content
                                         key={item.id}
-                                        dataTransacao={item.transferDate} 
-                                        valorTransacao={item.value?.toFixed(2)} 
-                                        tipoTransacao={item.type?.toUpperCase()} 
-                                        nomeTransacionado={item.operatorName ? item.operatorName : ""}/>
+                                        transferDate={item.transferDate} 
+                                        value={item.value?.toFixed(2)} 
+                                        type={item.type?.toUpperCase()} 
+                                        operatorName={item.operatorName ? item.operatorName : ""}/>
                                 }
                             }
                         )
                     }
                 </tbody>
-                <Footer tamanhoDaLista={data?.length} update={update} />
+                <Footer listLength={data?.length} update={update} />
             </table>
         </>
     )

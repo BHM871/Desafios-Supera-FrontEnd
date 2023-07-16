@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "../components/form/Form";
 import Table from "../components/table/Table";
 import '../css/App.css';
@@ -19,22 +19,30 @@ function App(){
     function fetchData(){
         fetch(API_URL)
         .then(res => res.json())
-        .then(resConv => setData(resConv))
+        .then(resConv => setData(resConv));
     }
     
     function fetchDataWithFilter(initial: String, final: String, name: String){
         fetch(prepareUrl(initial, final, name))
         .then(res => res.json())
-        .then(resConv => setData(resConv))
+        .then(resConv => setData(resConv));
     }
 
     //UseState
-    const [data, setData] = useState([{n:null}]);
+    const [data, setData] = useState([-1]);
     const [initial, setInitial] = useState("");
     const [final, setFinal] = useState("");
     const [name, setName] = useState("");
     const [page, setPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
+
+    //UseEffect
+    useEffect(() => {
+        fetchData()
+        
+        const lPage = data.length % 6 == 0 ? data.length / 6 : ((data.length / 6) + 1);
+        setLastPage(parseInt(lPage.toString(), 10))
+    }, [])
 
     //Actions
     const action = () => {
@@ -48,7 +56,7 @@ function App(){
         } else {
             fetchData()
         }
-
+        
         const lPage = data.length % 6 == 0 ? data.length / 6 : ((data.length / 6) + 1);
         setLastPage(parseInt(lPage.toString(), 10))
     }
@@ -65,9 +73,6 @@ function App(){
     }
 
     const update = (e) => {
-        console.log(e.target.value)
-        console.log(page)
-        console.log(lastPage + "a")
         switch (e.target.value) {
             case "<<": {
                 setPage(1);
@@ -100,10 +105,6 @@ function App(){
     }
 
     //Views
-    if(data[0].n == null){
-        fetchData()
-    }
-
     return (
         <>
             <div className="father-div">

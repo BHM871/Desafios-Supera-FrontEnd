@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import '/src/css/Input.css';
 
-function Input({texto, tipo, name, event}) {
+function Input({text, type, name, event}) {
     return (
         <div className="input-div">
-            <span className="texto">{texto}</span>
-            <input className="input" type={tipo} name={name} onChange={event}/>
+            <span className="texto">{text}</span>
+            <input className="input" type={type} name={name} onChange={event}/>
         </div>
     )
 }

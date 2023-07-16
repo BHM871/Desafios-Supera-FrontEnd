@@ -1,20 +1,20 @@
 import React from "react";
 
-function Content({key, dataTransacao, valorTransacao, tipoTransacao, nomeTransacionado}) {
+function Content({key, transferDate, value, type, operatorName}) {
     return(
         <>
             <tr key={key} className="row">
                 <td className="td">
-                    {dataTransacao}
+                    {transferDate}
                 </td>
                 <td className="td">
-                    R$ {valorTransacao}
+                    R$ {value}
                 </td>
                 <td className="td">
-                    {tipoTransacao}
+                    {type}
                 </td>
                 <td className="td">
-                    {nomeTransacionado}
+                    {operatorName}
                 </td>
             </tr>
         </>

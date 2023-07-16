@@ -2,30 +2,30 @@ import React from "react";
 import Button from "./Button";
 import '/src/css/Footer.css';
 
-function Footer({tamanhoDaLista, update}) {
-    var items = tamanhoDaLista / 6;
-    tamanhoDaLista % 6 > 0 ? ++items : items;
+function Footer({listLength, update}) {
+    var items = listLength / 6;
+    listLength % 6 > 0 ? ++items : items;
 
-    let quantidade = [];
+    let amount = [];
     for(var i = 1; i <= items; i++){
-        quantidade.push(i);
+        amount.push(i);
     }
 
     return(
         <>
             <tfoot className="row">
                 <th colSpan="4" className="text-footer">
-                        <Button valor={"<<"} acao={update} className={"button-footer"} />
-                        <Button valor={"<"} acao={update} className={"button-footer"} />
+                        <Button key={"<<"} value={"<<"} action={update} className={"button-footer"} />
+                        <Button key={"<"} value={"<"} action={update} className={"button-footer"} />
                         {
-                            quantidade.map(
+                            amount.map(
                                 item => {
-                                    return <Button key={item} valor={item} acao={update} className={"button-footer"} />
+                                    return <Button key={item} value={item} action={update} className={"button-footer"} />
                                 }
                             )
                         }
-                        <Button valor={">"} acao={update} className={"button-footer"} />
-                        <Button valor={">>"} acao={update} className={"button-footer"} />
+                        <Button key={">"} value={">"} action={update} className={"button-footer"} />
+                        <Button key={">>"} value={">>"} action={update} className={"button-footer"} />
                 </th>
             </tfoot>
         </>

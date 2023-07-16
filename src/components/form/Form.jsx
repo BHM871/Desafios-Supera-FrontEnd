@@ -8,9 +8,9 @@ function Form({action, event}) {
         <div>
             <div className="form">
                 <div>
-                    <Input texto={"Data de Ínicio"} tipo={"date"} name={"initial"} event={event} />
-                    <Input texto={"Data de Fim"} tipo={"date"} name={"final"} event={event} />
-                    <Input texto={"Nome do Operador Transacionado"} tipo={"text"} name={"name"} event={event}/>
+                    <Input text={"Data de Ínicio"} type={"date"} name={"initial"} event={event} />
+                    <Input text={"Data de Fim"} type={"date"} name={"final"} event={event} />
+                    <Input text={"Nome do Operador Transacionado"} type={"text"} name={"name"} event={event}/>
                 </div>
                 <Button action={action} />
             </div>
