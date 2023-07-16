@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "./Head";
 import Topics from "./Topics";
 import Content from "./Content";
 import Footer from "./Footer";
 import "../../css/Table.css";
 
-function Table({ data }) {
-    var index = 0;
+import { TransferData } from "../../interfaces/TransferData";
+
+function Table({ data, update, page}) {
+
+    const indexI = (page * 6 - 6);
+    const indexF = (page * 6 - 1);
 
     return (
         <>
@@ -15,10 +19,9 @@ function Table({ data }) {
                 <tbody>
                     <Topics />
                     {
-                        data?.map(
-                            item => {
-                                if(index < 6){
-                                    index++;
+                        data?.map(  
+                            (item: TransferData, i: number) => {
+                                if(i >= indexI && i <= indexF){
                                     return <Content
                                         key={item.id}
                                         dataTransacao={item.transferDate} 
@@ -30,28 +33,10 @@ function Table({ data }) {
                         )
                     }
                 </tbody>
-                <Footer tamanhoDaLista={data?.length} />
+                <Footer tamanhoDaLista={data?.length} update={update} />
             </table>
         </>
     )
-}
-
-function dateFormatteToString(date: Date){
-    var day = "";
-    if(date.getDate() < 10){
-        day = "0" + date.getDate();
-    } else {
-        day = date.getDate() + "";
-    }
-
-    var month = "";
-    if(date.getMonth() < 9){
-        month = "0" + (date.getMonth() + 1);
-    } else {
-        month = (date.getMonth() + 1) + "";
-    }
-
-    return day + "/" + month + "/" + date.getFullYear();
 }
 
 export default Table;
