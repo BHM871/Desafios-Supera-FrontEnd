@@ -3,17 +3,17 @@ import React from "react";
 function Topics(){
     return (
         <tr className="row">
-            <td className="td">
-                <th>Data</th>
+            <td className="th">
+                Data
             </td>
-            <td className="td">
-                <th>Valor</th>
+            <td className="th">
+                Valor
             </td>
-            <td className="td">
-                <th>Tipo</th>
+            <td className="th">
+                Tipo
             </td>
-            <td className="td">
-                <th>Nome operador transacionado</th>
+            <td className="th">
+                Nome operador transacionado
             </td>
         </tr>
     )

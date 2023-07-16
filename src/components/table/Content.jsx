@@ -1,9 +1,9 @@
 import React from "react";
 
-function Content({dataTransacao, valorTransacao, tipoTransacao, nomeTransacionado}) {
+function Content({key, dataTransacao, valorTransacao, tipoTransacao, nomeTransacionado}) {
     return(
         <>
-            <tr className="row">
+            <tr key={key} className="row">
                 <td className="td">
                     {dataTransacao}
                 </td>

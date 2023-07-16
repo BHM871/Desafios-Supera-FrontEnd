@@ -17,17 +17,17 @@ function Footer({tamanhoDaLista}) {
         <>
             <tfoot className="row">
                 <th colSpan="4" className="text-footer">
-                    <Button valor={"<<"} acao={atualizar()} className={"button-footer"}/>
-                    <Button valor={"<"} acao={atualizar()} className={"button-footer"}/>
-                    {
-                        quantidade.map(
-                            item => {
-                                return <Button valor={item} acao={atualizar()} className={"button-footer"}/>
-                            }
-                        )
-                    }
-                    <Button valor={">"} acao={atualizar()} className={"button-footer"}/>
-                    <Button valor={">>"} acao={atualizar()} className={"button-footer"}/>
+                        <Button valor={"<<"} acao={atualizar()} className={"button-footer"} />
+                        <Button valor={"<"} acao={atualizar()} className={"button-footer"} />
+                        {
+                            quantidade.map(
+                                item => {
+                                    return <Button key={item} valor={item} acao={atualizar()} className={"button-footer"} />
+                                }
+                            )
+                        }
+                        <Button valor={">"} acao={atualizar()} className={"button-footer"} />
+                        <Button valor={">>"} acao={atualizar()} className={"button-footer"} />
                 </th>
             </tfoot>
         </>

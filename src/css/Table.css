@@ -7,6 +7,12 @@
     width: 25%;
 }
 
+.th {
+    font-weight: bold;
+    border: 1px solid black;
+    width: 25%;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

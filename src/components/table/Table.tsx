@@ -11,7 +11,7 @@ function Table({ data }) {
     return (
         <>
             <table >
-                <Head saldoTotal={50} saldoNoPeriodo={100}/>
+                <Head saldoTotal={null} saldoNoPeriodo={null}/>
                 <tbody>
                     <Topics />
                     {
@@ -19,7 +19,8 @@ function Table({ data }) {
                             item => {
                                 if(index < 6){
                                     index++;
-                                    return <Content 
+                                    return <Content
+                                        key={item.id}
                                         dataTransacao={item.transferDate} 
                                         valorTransacao={item.value?.toFixed(2)} 
                                         tipoTransacao={item.type?.toUpperCase()} 
@@ -35,26 +36,22 @@ function Table({ data }) {
     )
 }
 
-function dateFormatteToString(date){
-    if(date == null){
-        return
-    }
-
+function dateFormatteToString(date: Date){
     var day = "";
     if(date.getDate() < 10){
-        day = "0" + date?.getDate();
+        day = "0" + date.getDate();
     } else {
-        day = date?.getDate() + "";
+        day = date.getDate() + "";
     }
 
     var month = "";
-    if(date?.getMonth() < 9){
-        month = "0" + (date?.getMonth() + 1);
+    if(date.getMonth() < 9){
+        month = "0" + (date.getMonth() + 1);
     } else {
-        month = (date?.getMonth() + 1) + "";
+        month = (date.getMonth() + 1) + "";
     }
 
-    return day+"/" + month + "/" + date?.getFullYear();
+    return day + "/" + month + "/" + date.getFullYear();
 }
 
 export default Table;
