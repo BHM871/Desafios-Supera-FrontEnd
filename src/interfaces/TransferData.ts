@@ -1,6 +1,6 @@
 export interface TransferData {
     id: number,
-    transferDate: Date,
+    transferDate: String,
     operatorName: String,
     value: number,
     type: String,
