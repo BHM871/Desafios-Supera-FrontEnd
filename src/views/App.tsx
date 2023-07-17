@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Form from "../components/form/Form";
 import Table from "../components/table/Table";
 import '../css/App.css';
+
 import { TransferData } from "../interfaces/TransferData";
+import { useTransferData } from "../hooks/useTransferData";
 
 const API_URL = "http://localhost:8080/";
 const HOUR = " 00:00:00";
@@ -12,27 +14,33 @@ function prepareUrl(initial: String, final: String, name: String){
         (initial ? "initial=" + initial : "") + 
         (final ? "&final=" + final : "") + 
         (name ? "&name=" + name : "");
-};
+}
 
-function allBalance(data: TransferData[], name: String, isAction: boolean){
+function getLastPage(data: TransferData[]) {
+    const lastPage = data?.length % 6 == 0 ? data?.length / 6 : (data?.length / 6) + 1
+    return parseInt(lastPage.toString(), 10);
+}
+
+function allBalance(name: String, isAction: boolean){
+    const { dataa } = useTransferData()
     let allBalance = 0;
-    let transferValue = [0];
+
     if(name != "" && isAction) {
-        data.map(
+        dataa?.map(
             item => {
-                transferValue.push(item.value)
+                if(item.operatorName == name){
+                    allBalance += item.value
+                }
             }
         )
     }
-    transferValue.forEach(item => {
-        allBalance += item
-    });
+
     return allBalance == 0 ? null : allBalance.toFixed(2);
 }
 
 function balanceInInterval(data: TransferData[], initial: String, final: String, isAction: boolean){
     var balanceInInterval = 0;
-    let transferValue = [0];
+
     if((initial != "" || final != "") && isAction) {
         data.map(
             item => {
@@ -40,9 +48,7 @@ function balanceInInterval(data: TransferData[], initial: String, final: String,
             }
         )
     }
-    transferValue.forEach(item => {
-        balanceInInterval += item
-    })
+    
     return balanceInInterval == 0 ? null : balanceInInterval.toFixed(2)
 }
 
@@ -74,8 +80,7 @@ function App(){
     useEffect(() => {
         fetchData()
         
-        const lPage = data.length % 6 == 0 ? data.length / 6 : ((data.length / 6) + 1);
-        setLastPage(parseInt(lPage.toString(), 10))
+        setLastPage(getLastPage(data))
     }, [])
 
     //Actions
@@ -92,8 +97,7 @@ function App(){
             fetchData()
         }
         
-        const lPage = data.length % 6 == 0 ? data.length / 6 : ((data.length / 6) + 1);
-        setLastPage(parseInt(lPage.toString(), 10))
+        setLastPage(getLastPage(data))
     }
 
     const event = (e) => {
@@ -123,9 +127,6 @@ function App(){
                 break;
 
             case ">": {
-                console.log(page)
-                console.log(lastPage)
-                console.log((page+1)<=lastPage)
                 if(page + 1 < lastPage){
                     setPage(page + 1);
                 }
@@ -133,7 +134,6 @@ function App(){
                 break;
 
             case ">>": {
-                console.log(lastPage)
                 setPage(lastPage);
             }
                 break;
@@ -158,7 +158,7 @@ function App(){
                         data={data} 
                         update={update} 
                         page={page} 
-                        allBalance={allBalance(data, name, isAction)} 
+                        allBalance={allBalance(name, isAction)} 
                         balanceInInterval={balanceInInterval(data, initial, final, isAction)} />
                 </div>
             </div>
