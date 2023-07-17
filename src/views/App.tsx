@@ -5,16 +5,9 @@ import '../css/App.css';
 
 import { TransferData } from "../interfaces/TransferData";
 import { useTransferData } from "../hooks/useTransferData";
+import { useTransferFilterData } from "../hooks/useTransferFilterData";
 
-const API_URL = "http://localhost:8080/";
 const HOUR = " 00:00:00";
-
-function prepareUrl(initial: String, final: String, name: String){
-    return API_URL + "filters?" +  
-        (initial ? "initial=" + initial : "") + 
-        (final ? "&final=" + final : "") + 
-        (name ? "&name=" + name : "");
-}
 
 function getLastPage(data: TransferData[]) {
     const lastPage = data?.length % 6 == 0 ? data?.length / 6 : (data?.length / 6) + 1
@@ -22,10 +15,11 @@ function getLastPage(data: TransferData[]) {
 }
 
 function allBalance(name: String, isAction: boolean){
-    const { dataa } = useTransferData()
+    const [dataa, setDataa] = useState<TransferData[]>([])
+    useTransferData(setDataa)
     let allBalance = 0;
 
-    if(name != "" && isAction) {
+    if(name != "" && isAction){
         dataa?.map(
             item => {
                 if(item.operatorName == name){
@@ -54,19 +48,6 @@ function balanceInInterval(data: TransferData[], initial: String, final: String,
 
 function App(){
 
-    //Hooks
-    function fetchData(){
-        fetch(API_URL)
-        .then(res => res.json())
-        .then(resConv => setData(resConv));
-    }
-    
-    function fetchDataWithFilter(initial: String, final: String, name: String){
-        fetch(prepareUrl(initial, final, name))
-        .then(res => res.json())
-        .then(resConv => setData(resConv));
-    }
-
     //UseState
     const [data, setData] = useState<TransferData[]>([]);
     const [initial, setInitial] = useState("");
@@ -78,7 +59,7 @@ function App(){
 
     //UseEffect
     useEffect(() => {
-        fetchData()
+        useTransferData(setData)
         
         setLastPage(getLastPage(data))
     }, [])
@@ -92,9 +73,9 @@ function App(){
             const f = 
                 final != "" ? (new Date(final + HOUR)).getTime().toString() : "";
 
-            fetchDataWithFilter(i, f, name)
+            useTransferFilterData(i, f, name, setData)
         } else {
-            fetchData()
+            useTransferData(setData)
         }
         
         setLastPage(getLastPage(data))
@@ -127,14 +108,16 @@ function App(){
                 break;
 
             case ">": {
-                if(page + 1 < lastPage){
+                if(page + 1 <= lastPage){
                     setPage(page + 1);
                 }
             }
                 break;
 
             case ">>": {
-                setPage(lastPage);
+                if(page < lastPage){
+                    setPage(lastPage);
+                }
             }
                 break;
 

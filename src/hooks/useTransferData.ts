@@ -1,23 +1,9 @@
-import axios, { AxiosPromise } from "axios"
-import { TransferData } from "../interfaces/TransferData";
-import { useQuery } from "@tanstack/react-query";
+import { Dispatch } from "react";
 
-const API_URL = "http://localhost:8080/"
+const API_URL = "http://localhost:8080/";
 
-const fecthData = async () : AxiosPromise<TransferData[]> => {
-    const response = axios.get(API_URL);
-    return response;
-}
-
-export function useTransferData(){
-    const query = useQuery({
-        queryFn: fecthData,
-        queryKey: ['transfer-data'],
-        retry: 2
-    });
-
-    return {
-        ...query,
-        dataa: query.data?.data
-    }
+export function useTransferData(setData: Dispatch<React.SetStateAction<any>>){
+    fetch(API_URL)
+    .then(res => res.json())
+    .then(resConv => setData(resConv))
 }
